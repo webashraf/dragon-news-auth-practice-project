@@ -1,12 +1,11 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
-const cors = require("cors");
+var cors = require('cors');
 const categories = require("./categoriesData/categories.json");
 
+app.use(cors())
 
-
-app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello world I'm backend sever");
 });
