@@ -12,6 +12,9 @@ app.get("/", (req, res) => {
 });
 
 
+
+
+// Categories //
 app.get("/categories", (req, res) => {
   res.send(categories);
 });
@@ -26,6 +29,10 @@ app.get("/categories/:id", (req, res)=>{
   }
 })
 
+
+
+
+// News //
 app.get("/news", (req, res)=>{
   res.send(news)
 })
