@@ -36,7 +36,7 @@ const Categorie = () => {
               <Card.Title>{news.title}</Card.Title>
               <Card.Text>
                 {news.details.slice(0, 150)}.....{" "}
-                <Link to={`news/${news._id}`}>
+                <Link to={`/news/${news._id}`}>
                   <Button variant="danger">Read more</Button>
                 </Link>
               </Card.Text>

@@ -18,9 +18,9 @@ const router = createBrowserRouter([
                 loader: () => fetch("http://localhost:5000/news")
             },
             {
-                path: "/categorie/:idName",
+                path: "/categorie/:id",
                 element: <Categorie></Categorie>,
-                loader: ({params}) => fetch(`http://localhost:5000/categories/${params.idName}`)
+                loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
             }
         ]
     },
