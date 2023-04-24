@@ -6,7 +6,7 @@ import LeftNav from "../PAGES/SHARED/LeftNav/LeftNav";
 import RightNav from "../PAGES/SHARED/RightNav/RightNav";
 import { Outlet } from "react-router-dom";
 
-const Main = () => {
+const MainLayout = () => {
   return (
     <div>
       <Header></Header>
@@ -30,4 +30,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainLayout;
