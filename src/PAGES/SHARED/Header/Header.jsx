@@ -12,7 +12,7 @@ import AuthContextProvider, {
 
 const Header = () => {
   const { user, handleSignOut } = useContext(AuthContext);
-  // console.log(user);
+  console.log(user);
 
 
   const handleSignOutBtn = () =>{

@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthContextProvider/AuthContextProvider";
+import { sendEmailVerification } from "firebase/auth";
 
 const RegisterUser = () => {
 
-  const {createUserEmailPassowrd} = useContext(AuthContext);
+  const {createUserEmailPassowrd, auth} = useContext(AuthContext);
 
     const handleRegister= e =>{
         e.preventDefault();
@@ -16,17 +17,21 @@ const RegisterUser = () => {
         const checked = form.checked.value;
         console.log(email, password, confirmPass, checked);
 
-      if (password === confirmPass) {
-        createUserEmailPassowrd(email, password)
-        .then(result => {
-          console.log(result.user);
-        })
-        .catch(err => {
-          console.log(err);
-        })
+        
+        if (password === confirmPass) {
+          createUserEmailPassowrd(email, password)
+          .then(result => {
+            console.log(result.user);
+            sendEmailVerification(result.user)
+            .then(result => console.log(result))
+            .catch(err => console.log(err))
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        }
+        
       }
-
-    }
 
 
 
