@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-// import Main from "../LAYOUT/MainLayout";
-import Categorie from "../PAGES/HOME/Categorie/Categorie";
-import Home from "../PAGES/HOME/Home/Home";
-// import Main2 from "../LAYOUT/NewsLayout";
+import LoginLayout from "../LAYOUT/LoginLayout";
 import MainLayout from "../LAYOUT/MainLayout";
 import NewsLayout from "../LAYOUT/NewsLayout";
+import SignUpLayout from "../LAYOUT/RegisterLayout";
+import Categorie from "../PAGES/HOME/Categorie/Categorie";
+import Home from "../PAGES/HOME/Home/Home";
 import News from "../PAGES/HOME/News/News";
 
 const router = createBrowserRouter([
@@ -34,6 +34,14 @@ const router = createBrowserRouter([
                 loader: ({params})=> fetch(`http://localhost:5000/news/${params.id}`)
             }
         ]
+    },
+    {
+        path: "login",
+        element: <LoginLayout></LoginLayout>,
+    },
+    {
+        path: "signup",
+        element: <SignUpLayout></SignUpLayout>
     }
 ])
 
