@@ -11,7 +11,7 @@ const SignIn = () => {
 const {signInUser, user, auth} = useContext(AuthContext);
 const [forgetEmail, setForgetEmail] = useState("");
 const emailRef = useRef();
-const [passwordView, setPasswordView] = useState(false);
+const [passwordView, setPasswordView] = useState(true);
 
 const handleSignInUser = e =>{
     e.preventDefault();
@@ -34,9 +34,6 @@ const handleForgetPassword = () => {
 }
 
 
-const handleViewPass = () =>{
-  setPasswordView(!passwordView);
-}
 
   return (
     <Form onSubmit={handleSignInUser} className="w-50 mx-auto">
@@ -62,7 +59,7 @@ const handleViewPass = () =>{
           required
           placeholder="Password"
         />
-        <div onClick={handleViewPass}>
+        <div onClick={()=> setPasswordView(!passwordView)}>
         {
           passwordView ? <BsEyeFill></BsEyeFill> : <BsEyeSlashFill></BsEyeSlashFill>
         }
