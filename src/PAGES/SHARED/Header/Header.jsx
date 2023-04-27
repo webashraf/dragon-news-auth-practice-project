@@ -29,9 +29,9 @@ const Header = () => {
         <img src={logo} alt="" />
         <p>Journalism Without Fear or Favour</p>
         <p>{moment().format("dddd, MMMM D, YYYY")}</p>
-        <div className="d-flex">
+        <div className="d-flex w-75 bg-danger mx-auto rounded">
           <button className="btn btn-danger">Latest</button>
-          <Marquee speed={100} pauseOnHover={true}>
+          <Marquee speed={100} pauseOnHover={true} className="text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
             recusandae ipsum similique praesentium! Explicabo error atque ab
             temporibus, beatae voluptatum!
@@ -41,7 +41,7 @@ const Header = () => {
       <div>
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
           <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#home">The Dragon News</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mx-auto d-flex gap-3">

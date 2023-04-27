@@ -14,9 +14,9 @@ const News = () => {
       <Card.Body>
         <Card.Title className="fs-3 fw-bolder">{title}</Card.Title>
         <Card.Text>{details}</Card.Text>
-        <Link to={`/categories/${category_id}`}>
+        <Link to={`/categorie/${category_id}`}>
           <Button variant="danger">
-            {" "}
+
             <FaArrowLeft></FaArrowLeft> All news in this categorie
           </Button>
         </Link>

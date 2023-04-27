@@ -2,9 +2,16 @@ import React, { useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthContextProvider/AuthContextProvider";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { useState } from "react";
+import { useRef } from "react";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
 const SignIn = () => {
-const {signInUser, user} = useContext(AuthContext);
+const {signInUser, user, auth} = useContext(AuthContext);
+const [forgetEmail, setForgetEmail] = useState("");
+const emailRef = useRef();
+const [passwordView, setPasswordView] = useState(false);
 
 const handleSignInUser = e =>{
     e.preventDefault();
@@ -12,13 +19,24 @@ const handleSignInUser = e =>{
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    setForgetEmail(email);
 
     signInUser(email, password);
 
 }
 
+const handleForgetPassword = () => {
+  const email = emailRef.current.value;
+  sendPasswordResetEmail(auth, email)
+  .then(result => console.log(result))
+  .catch(err => console.log(err))
+
+}
 
 
+const handleViewPass = () =>{
+  setPasswordView(!passwordView);
+}
 
   return (
     <Form onSubmit={handleSignInUser} className="w-50 mx-auto">
@@ -27,6 +45,7 @@ const handleSignInUser = e =>{
         <Form.Control
           type="email"
           name="email"
+          ref={emailRef}
           required
           placeholder="Enter email"
         />
@@ -38,11 +57,16 @@ const handleSignInUser = e =>{
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
-          type="password"
+          type={passwordView ? "password" : "text"}
           name="password"
           required
           placeholder="Password"
         />
+        <div onClick={handleViewPass}>
+        {
+          passwordView ? <BsEyeFill></BsEyeFill> : <BsEyeSlashFill></BsEyeSlashFill>
+        }
+        </div>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
@@ -50,6 +74,7 @@ const handleSignInUser = e =>{
       <Button variant="secondary" size="lg" type="submit">
         Sign In
       </Button>
+      <p onClick={handleForgetPassword} className="link-danger">Forget Password?</p>
       <p>Are you new ? <Link className="link-danger" to={"/signup"}>Register Now</Link>.</p>
 
     </Form>

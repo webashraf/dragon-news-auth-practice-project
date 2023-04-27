@@ -9,7 +9,7 @@ import { Link, useLoaderData, useParams } from 'react-router-dom';
 const Categorie = () => {
     const {idName} = useParams();
     const news = useLoaderData();
-    console.log(news);
+    // console.log(news);
     return (
         <div>
         <h1 className="text-center">Home page</h1>
